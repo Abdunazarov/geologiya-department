@@ -72,3 +72,53 @@ class YouthUnionSerializer(serializers.ModelSerializer):
     class Meta:
         model = YouthUnion
         fields = '__all__'
+
+
+class GeoInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GeoInfo
+        fields = '__all__'
+
+
+class ResourceBaseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ResourceBase
+        fields = '__all__'
+
+
+class ChaptersSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Chapters
+        fields = '__all__'
+
+
+class ChaptersItemsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChaptersItems
+        fields = '__all__'
+
+
+class OfficeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Office
+        fields = '__all__'
+
+
+class LawsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Laws
+        fields = '__all__'
+
+
+class ProfConnectionsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProfConnections
+        fields = '__all__'
+
+
+class ReportAcceptanceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ReportAcceptance
+        fields = '__all__'
+
+

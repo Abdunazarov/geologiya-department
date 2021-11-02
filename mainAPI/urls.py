@@ -18,6 +18,14 @@ router.register('Maqsadli-auditoriya', AuditoryViewset, basename='MaqsadliAud')
 router.register('Xodimlar', StaffViewset, basename='Xodimlar')
 router.register('Hujjatlar-ekspertizalari', ProjectExpertiseViewset, basename='Hujjatlar-ekspertizalari')
 router.register('Yoshlar-ittifoqi', YouthUnionViewset, basename='YoshItt')
+router.register('Geologik-malumot', GeoInfoViewset, basename='GeoMal')
+router.register('Resurlar-bazasi', ResourceBaseViewset, basename='ResBaz')
+router.register("Bo'limlar", ChaptersViewset, basename="Bo'limlar")
+router.register("Bo'limlar-element", ChaptersItemsViewset, basename="Bo'lElem")
+router.register("Offis", OfficeViewset, basename="Offis")
+router.register("Qarorlar", LawsViewset, basename="Qarorlar")
+router.register("Mutaxassislar-aloqasi", ProfConnectionsViewset, basename="Mutaxassislar-aloqasi")
+router.register("Hisobot-qabul-qilish", ReportAcceptanceViewset, basename="Qarorlar")
 urlpatterns = [
     path('', include(router.urls)),
 ]

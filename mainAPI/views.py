@@ -59,8 +59,47 @@ class ProjectExpertiseViewset(viewsets.ModelViewSet):
     queryset = ProjectExpertise.objects.all()
 
 
-
 class YouthUnionViewset(viewsets.ModelViewSet):
     serializer_class = YouthUnionSerializer
     queryset = YouthUnion.objects.all()
+
+
+class GeoInfoViewset(viewsets.ModelViewSet):
+    serializer_class = GeoInfoSerializer
+    queryset = GeoInfo.objects.all()
+
+
+class ResourceBaseViewset(viewsets.ModelViewSet):
+    serializer_class = ResourceBaseSerializer
+    queryset = ResourceBase.objects.all()
+
+
+class ChaptersViewset(viewsets.ModelViewSet):
+    serializer_class = ChaptersSerializer
+    queryset = Chapters.objects.all()
+
+
+class ChaptersItemsViewset(viewsets.ModelViewSet):
+    serializer_class = ChaptersItemsSerializer
+    queryset = ChaptersItems.objects.all()
+
+
+class OfficeViewset(viewsets.ModelViewSet):
+    serializer_class = OfficeSerializer
+    queryset = Office.objects.all()
+
+
+class LawsViewset(viewsets.ModelViewSet):
+    serializer_class = LawsSerializer
+    queryset = Laws.objects.all()
+
+
+class ProfConnectionsViewset(viewsets.ModelViewSet):
+    serializer_class = ProfConnectionsSerializer
+    queryset = ProfConnections.objects.all()
+
+
+class ReportAcceptanceViewset(viewsets.ModelViewSet):
+    serializer_class = ReportAcceptanceSerializer
+    queryset = ReportAcceptance.objects.all()
 

@@ -152,3 +152,102 @@ class YouthUnion(models.Model):
     class Meta:
         verbose_name_plural = 'Yoshlar ittifoqi'
         verbose_name = 'Yoshlar ittifoqi'
+
+
+# page-8, i.e. vazirlar maxkamasining qarori, as well as p-9-10
+
+
+class GeoInfo(models.Model):
+    title = models.CharField(max_length=155)
+    text = RichTextField()
+
+    class Meta:
+        verbose_name_plural = "Geologik ma'lumotlar to'plami"
+        verbose_name = "Geologik ma'lumotlar to'plami"
+
+    def __str__(self):
+        return self.title
+
+
+class ResourceBase(models.Model):
+    region_name = models.CharField(max_length=200)
+    excel_file = models.FileField()
+
+    class Meta:
+        verbose_name_plural = 'Mineral resurslar bazasi'
+        verbose_name = 'Mineral resurslar bazasi'
+
+    def __str__(self):
+        return self.region_name
+
+
+class Chapters(models.Model):
+    title = models.CharField(max_length=150)
+    sub_title = models.CharField(max_length=150, blank=True)
+    chapter_items = models.ForeignKey('ChaptersItems', on_delete=models.CASCADE, verbose_name="Bo'lim")
+
+    class Meta:
+        verbose_name_plural = "Bo'limlar"
+
+    def __str__(self):
+        return self.title
+
+
+class ChaptersItems(models.Model):
+    text = RichTextField()
+
+    class Meta:
+        verbose_name_plural = "Bo'limlar (Elem)"
+        verbose_name = "Bo'limlar (Elem)"
+
+    def __str__(self):
+        return f"{str(self.text)[0:20]}..."
+
+
+class Office(models.Model):
+    address = models.CharField(max_length=150)
+    phone = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = 'Manzil va telefon'
+        verbose_name = 'Manzil va telefon'
+
+    def __str__(self):
+        return self.address
+
+
+class Laws(models.Model):
+    title = models.CharField(max_length=255)
+    date = models.DateField()
+    text = RichTextField()
+    file = models.FileField()
+
+    class Meta:
+        verbose_name = 'Qaror'
+        verbose_name_plural = 'Qarorlar'
+
+    def __str__(self):
+        return f"{str(self.title)[0:25]}"
+
+
+class ProfConnections(models.Model):
+    text = RichTextField()
+
+    class Meta:
+        verbose_name = 'Hisobot olish uchun masullarning aloqalari'
+        verbose_name_plural = 'Hisobot olish uchun masullarning aloqalari'
+
+    def __str__(self):
+        return f"{str(self.text)[0:25]}"
+
+
+class ReportAcceptance(models.Model):
+    text = RichTextField()
+
+    class Meta:
+        verbose_name = 'Hisobotlarni qabul qilish'
+        verbose_name_plural = 'Hisobotlarni qabul qilish'
+
+    def __str__(self):
+        return f"{str(self.text)[0:25]}"
+
