@@ -24,14 +24,10 @@ admin.site.register(Office)
 admin.site.register(Laws)
 admin.site.register(ProfConnections)
 admin.site.register(ReportAcceptance)
+admin.site.register(University)
 
 
 admin.site.site_header = "Geologiya Axborot Markazi"
-
-
-class MyAdmin(AdminSite):
-    list_display = ('title', 'created')
-
 
 # admin.site.register(MyAdmin)
 admin.site.unregister(Group)

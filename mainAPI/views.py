@@ -2,7 +2,8 @@ from .models import *
 from .serializers import *
 from rest_framework import viewsets
 from django.core.mail import mail_admins
-
+from django.views.generic.base import View
+# from rest_framework.response import Htt
 
 class NavbarViewset(viewsets.ModelViewSet):
     serializer_class = NavbarSerializer
@@ -102,4 +103,9 @@ class ProfConnectionsViewset(viewsets.ModelViewSet):
 class ReportAcceptanceViewset(viewsets.ModelViewSet):
     serializer_class = ReportAcceptanceSerializer
     queryset = ReportAcceptance.objects.all()
+
+
+class UniversityViewset(viewsets.ModelViewSet):
+    serializer_class = UniversitySerializer
+    queryset = University.objects.all()
 

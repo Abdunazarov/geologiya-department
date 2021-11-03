@@ -47,8 +47,8 @@ class CarouselNews(models.Model):
     img = models.ImageField()
 
     class Meta:
-        verbose_name_plural = 'Karusellar'
-        verbose_name = 'Karusel'
+        verbose_name_plural = 'Каруселлар'
+        verbose_name = 'Карусел'
 
     def __str__(self):
         return self.title
@@ -59,6 +59,10 @@ class MineralResources(models.Model):
     button_txt = models.CharField(max_length=100)
     button_link = models.CharField(max_length=255)
     img = models.ImageField()
+
+    class Meta:
+        verbose_name_plural = "Минерал ресурслар"
+        verbose_name = "Минерал ресурслар"
 
     def __str__(self):
         return self.title
@@ -72,8 +76,8 @@ class TwoMaps(models.Model):
     button_link = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name_plural = 'Xarita'
-        verbose_name = 'Xarita'
+        verbose_name_plural = 'Харита'
+        verbose_name = 'Харита'
 
 
 class CompanyPurpose(models.Model):
@@ -81,8 +85,8 @@ class CompanyPurpose(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name_plural = 'Asosiy maqsadlar'
-        verbose_name = 'Asosiy maqsad'
+        verbose_name_plural = 'Асосий мақсадлар'
+        verbose_name = 'Асосий мақсадлар'
 
     def __str__(self):
         return self.title
@@ -93,8 +97,8 @@ class CompanyTasks(models.Model):
     company_tasks_items = models.ManyToManyField('CompanyTasksItems', related_name='tasksitems', verbose_name='child_item')
 
     class Meta:
-        verbose_name_plural = 'Asosiy vazifalar'
-        verbose_name = 'Asosiy vazifa'
+        verbose_name_plural = 'Асосий вазифалар'
+        verbose_name = 'Асосий вазифалар'
 
     def __str__(self):
         return self.title
@@ -104,8 +108,8 @@ class CompanyTasksItems(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name_plural = 'Asosiy vazifalar (Elem)'
-        verbose_name = 'Asosiy vazifalar (Elem)'
+        verbose_name_plural = 'Асосий вазифалар (Элем)'
+        verbose_name = 'Асосий вазифалар (Элем)'
 
     def __str__(self):
         return f"{str(self.text)[0:20]}..."
@@ -116,8 +120,8 @@ class Auditory(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name_plural = 'Maqsadli auditoriya'
-        verbose_name = 'Maqsadli auditoriya'
+        verbose_name_plural = 'Мақсадли аудитория'
+        verbose_name = 'Мақсадли аудитория'
 
     def __str__(self):
         return f"{str(self.text)[0:20]}..."
@@ -128,8 +132,8 @@ class Staff(models.Model):
     info = models.CharField(max_length=255)
 
     class Meta:
-        verbose_name_plural = 'Xodimalar'
-        verbose_name = 'Xodim'
+        verbose_name_plural = 'Ходимлар'
+        verbose_name = 'Ходим'
 
     def __str__(self):
         return self.full_name
@@ -139,8 +143,8 @@ class ProjectExpertise(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name_plural = 'Loyiha hujjatlarini ekspertizasi'
-        verbose_name = 'Loyiha hujjatlarini ekspertizalari'
+        verbose_name_plural = 'Лойиха хужжатларини экспертизаси'
+        verbose_name = 'Лойиха хужжатларини экспертизаси'
 
     def __str__(self):
         return f"{str(self.text)[0:30]}..."
@@ -150,8 +154,8 @@ class YouthUnion(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name_plural = 'Yoshlar ittifoqi'
-        verbose_name = 'Yoshlar ittifoqi'
+        verbose_name_plural = 'Ёшлар иттифоқи'
+        verbose_name = 'Ёшлар иттифоқи'
 
 
 # page-8, i.e. vazirlar maxkamasining qarori, as well as p-9-10
@@ -162,8 +166,8 @@ class GeoInfo(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name_plural = "Geologik ma'lumotlar to'plami"
-        verbose_name = "Geologik ma'lumotlar to'plami"
+        verbose_name_plural = "Геологик малумотлар тўплами"
+        verbose_name = "Геологик малумотлар тўплами"
 
     def __str__(self):
         return self.title
@@ -174,8 +178,8 @@ class ResourceBase(models.Model):
     excel_file = models.FileField()
 
     class Meta:
-        verbose_name_plural = 'Mineral resurslar bazasi'
-        verbose_name = 'Mineral resurslar bazasi'
+        verbose_name_plural = 'Минерал ресурслар базаси'
+        verbose_name = 'Минерал ресурслар базаси'
 
     def __str__(self):
         return self.region_name
@@ -187,7 +191,7 @@ class Chapters(models.Model):
     chapter_items = models.ForeignKey('ChaptersItems', on_delete=models.CASCADE, verbose_name="Bo'lim")
 
     class Meta:
-        verbose_name_plural = "Bo'limlar"
+        verbose_name_plural = "Бўлимлар"
 
     def __str__(self):
         return self.title
@@ -197,8 +201,8 @@ class ChaptersItems(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name_plural = "Bo'limlar (Elem)"
-        verbose_name = "Bo'limlar (Elem)"
+        verbose_name_plural = "Бўлимлар (Элем)"
+        verbose_name = "Бўлимлар (Элем)"
 
     def __str__(self):
         return f"{str(self.text)[0:20]}..."
@@ -209,8 +213,8 @@ class Office(models.Model):
     phone = models.CharField(max_length=100)
 
     class Meta:
-        verbose_name_plural = 'Manzil va telefon'
-        verbose_name = 'Manzil va telefon'
+        verbose_name_plural = 'Манзил ва телефон'
+        verbose_name = 'Манзил ва телефон'
 
     def __str__(self):
         return self.address
@@ -234,8 +238,8 @@ class ProfConnections(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name = 'Hisobot olish uchun masullarning aloqalari'
-        verbose_name_plural = 'Hisobot olish uchun masullarning aloqalari'
+        verbose_name = 'Хисобот олиш учун масъулларнинг алоқалари'
+        verbose_name_plural = 'Хисобот олиш учун масъулларнинг алоқалари'
 
     def __str__(self):
         return f"{str(self.text)[0:25]}"
@@ -245,9 +249,60 @@ class ReportAcceptance(models.Model):
     text = RichTextField()
 
     class Meta:
-        verbose_name = 'Hisobotlarni qabul qilish'
-        verbose_name_plural = 'Hisobotlarni qabul qilish'
+        verbose_name = 'Хисоботни қабул қилиш'
+        verbose_name_plural = 'Хисоботларни кабул қилиш'
 
     def __str__(self):
         return f"{str(self.text)[0:25]}"
+
+
+class University(models.Model):
+    text = RichTextField()
+    img = models.ImageField()
+
+    class Meta:
+        verbose_name = "Университет тадқиқотлари"
+        verbose_name_plural = "Университет тадқиқотлари"
+
+    def __str__(self):
+        return f"{str(self.text)[0:30]}"
+
+
+class News(models.Model):
+    img = models.ImageField()
+    text = models.CharField(max_length=500)
+    date = models.DateField()
+
+    class Meta:
+        verbose_name = "Олиб борилаётган ишлар"
+        verbose_name_plural = "Олиб борилаётган ишлар"
+
+    def __str__(self):
+        return f"{str(self.text)[0:30]}"
+
+
+class ExcelForm(models.Model):
+    resource = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
+    condition_a_b_c1 = models.CharField(max_length=155)
+    condition_a_b_c2 = models.CharField(max_length=155)
+    condition_c2 = models.IntegerField()
+    exploitation = models.CharField(max_length=255)
+    absorption_level = models.CharField(max_length=255)
+    number_explot = models.CharField(max_length=155)
+    license = models.DateField()
+    prod_quantity = models.FloatField()
+    affiliation = models.CharField(max_length=255)
+    affirmation_year = models.CharField(max_length=155)
+    protocol_num = models.IntegerField()
+    raw_material = models.CharField(max_length=155)
+    region = models.CharField(max_length=155)
+    dist = models.CharField(max_length=155)
+
+    class Meta:
+        verbose_name_plural = "Excel формалар"
+        verbose_name = "Excel форма"
+
+    def __str__(self):
+        return self.region
 

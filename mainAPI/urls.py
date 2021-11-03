@@ -26,6 +26,8 @@ router.register("Offis", OfficeViewset, basename="Offis")
 router.register("Qarorlar", LawsViewset, basename="Qarorlar")
 router.register("Mutaxassislar-aloqasi", ProfConnectionsViewset, basename="Mutaxassislar-aloqasi")
 router.register("Hisobot-qabul-qilish", ReportAcceptanceViewset, basename="Qarorlar")
+router.register("Universitet-tadqiqotlari", UniversityViewset, basename="UnivTad")
+# router.register("Export-excel", export_excel, basename="ExpExcel")
 urlpatterns = [
     path('', include(router.urls)),
 ]

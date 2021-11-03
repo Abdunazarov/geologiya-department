@@ -122,3 +122,9 @@ class ReportAcceptanceSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class UniversitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = University
+        fields = '__all__'
+
+
