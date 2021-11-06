@@ -4,11 +4,16 @@ from django.contrib.auth.models import Group
 from .models import *
 
 
-admin.site.register(Navbar)
+@admin.register(Navbar, Footer, TwoMaps)
+class PersonAdmina(admin.ModelAdmin):
+    pass
+
+
+# admin.site.register(Navbar)
 admin.site.register(NavbarItem)
-admin.site.register(Footer)
+# admin.site.register(Footer)
 admin.site.register(MineralResources)
-admin.site.register(TwoMaps)
+# admin.site.register(TwoMaps)
 admin.site.register(CompanyPurpose)
 admin.site.register(CompanyTasks)
 admin.site.register(CompanyTasksItems)

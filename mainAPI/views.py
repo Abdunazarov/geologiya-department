@@ -109,3 +109,4 @@ class UniversityViewset(viewsets.ModelViewSet):
     serializer_class = UniversitySerializer
     queryset = University.objects.all()
 
+
