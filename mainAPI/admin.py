@@ -4,16 +4,11 @@ from django.contrib.auth.models import Group
 from .models import *
 
 
-@admin.register(Navbar, Footer, TwoMaps)
-class PersonAdmina(admin.ModelAdmin):
-    pass
-
-
-# admin.site.register(Navbar)
+admin.site.register(Navbar)
 admin.site.register(NavbarItem)
-# admin.site.register(Footer)
+admin.site.register(Footer)
 admin.site.register(MineralResources)
-# admin.site.register(TwoMaps)
+admin.site.register(TwoMaps)
 admin.site.register(CompanyPurpose)
 admin.site.register(CompanyTasks)
 admin.site.register(CompanyTasksItems)
@@ -30,12 +25,8 @@ admin.site.register(Laws)
 admin.site.register(ProfConnections)
 admin.site.register(ReportAcceptance)
 admin.site.register(University)
+admin.site.register(ExcelForm)
+admin.site.register(BookkeepingReport)
+admin.site.register(News)
 
-
-admin.site.site_header = "Geologiya Axborot Markazi"
-
-# admin.site.register(MyAdmin)
-admin.site.unregister(Group)
-admin.site.site_title = "Geology"
-admin.site.index_title = "Welcome to 'Geologia Axborot Markazi'"
 

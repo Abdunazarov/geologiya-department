@@ -128,3 +128,21 @@ class UniversitySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ExcelFormSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ExcelForm
+        fields = '__all__'
+
+
+class NewsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = News
+        fields = '__all__'
+
+
+class BookkeepingReportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BookkeepingReport
+        fields = '__all__'
+
+

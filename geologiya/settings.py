@@ -18,7 +18,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    'baton',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'mainAPI',
     'ckeditor',
     'rest_framework',
+    'baton.autodiscover',
 
 ]
 
@@ -116,3 +117,180 @@ STATIC_ROOT = BASE_DIR / "static_root"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+BATON = {
+    'SITE_HEADER': 'Геология',
+    'SITE_TITLE': 'Геология',
+    'INDEX_TITLE': 'Администрация',
+    'SUPPORT_HREF': 'https://github.com/otto-torino/django-baton/issues',
+    'COPYRIGHT': 'copyright © 2017 <a href="https://napaautomotive.uz/ru"> Napa Automotive</a>', # noqa
+    'POWERED_BY': '<a href="https://www.instagram.com/d__abdunazarov/"> D_Abdunazarov</a>',
+    'CONFIRM_UNSAVED_CHANGES': True,
+    'SHOW_MULTIPART_UPLOADING': True,
+    'ENABLE_IMAGES_PREVIEW': True,
+    'CHANGELIST_FILTERS_IN_MODAL': True,
+    'CHANGELIST_FILTERS_ALWAYS_OPEN': False,
+    'CHANGELIST_FILTERS_FORM': True,
+    'COLLAPSABLE_USER_AREA': False,
+    'MENU_ALWAYS_COLLAPSED': False,
+    'MENU_TITLE': 'Menu',
+    'MESSAGES_TOASTS': False,
+    'GRAVATAR_DEFAULT_IMG': 'retro',
+    'LOGIN_SPLASH': '/static/core/img/login-splash.png',
+    'SEARCH_FIELD': {
+        'label': 'Search contents...',
+        'url': '/search/',
+    },
+    'MENU': (
+        { 'type': 'title', 'label': 'main', 'apps': ('auth', ) },
+        {
+            'type': 'app',
+            'name': 'auth',
+            'label': 'Authentication',
+            'icon': 'fa fa-address-card',
+            'default_open': False,
+            'models': (
+                {
+                    'name': 'user',
+                    'label': 'Users'
+                },
+                {
+                    'name': 'group',
+                    'label': 'Groups'
+                },
+            )
+        },
+        {
+            'type': 'app',
+            'name': 'mainapi',
+            'label': 'User моделлари (1-қисим)',
+            'icon': 'fa fa-lock',
+            'default_open': False,
+            'models': (
+                {
+                    'name': 'carouselnews',
+                    'label': 'Янгиликлар (карусель)'
+                },
+                {
+                    'name': 'twomaps',
+                    'label': 'Иккта Карта'
+                },
+                {
+                    'name': 'mineralresources',
+                    'label': 'Минерал Ресурслар'
+                },
+                {
+                    'name': 'office',
+                    'label': 'Манзил ва телефон'
+                },
+                {
+                    'name': 'companypurpose',
+                    'label': 'Асосий мақсадлари'
+                },
+                {
+                    'name': 'companytasks',
+                    'label': 'Асосий вазифалар'
+                },
+                {
+                    'name': 'companytasksitems',
+                    'label': 'Асосий вазифалар (эл)'
+                },
+                {
+                    'name': 'auditory',
+                    'label': 'Мақсадли аудитория'
+                },
+                {
+                    'name': 'navbar',
+                    'label': 'Навбар'
+                },
+                {
+                    'name': 'navbaritem',
+                    'label': 'Навбар (эл)'
+                },
+                {
+                    'name': 'footer',
+                    'label': 'Футер (эл)'
+                },
+
+            )
+        },
+        {
+            'type': 'app',
+            'name': 'mainapi',
+            'label': 'User моделлари (2-қисим)',
+            'icon': 'fa fa-lock',
+            'default_open': False,
+            'models': (
+                {
+                    'name': 'staff',
+                    'label': 'Ходимлар'
+                },
+                {
+                    'name': 'youthunion',
+                    'label': 'Ёшлар иттифоқи'
+                },
+                {
+                    'name': 'laws',
+                    'label': 'Қарорлар'
+                },
+                {
+                    'name': 'profconnections',
+                    'label': 'Хисобот олиш учун масъулларнинг алоқалари'
+                },
+                {
+                    'name': 'reportacceptance',
+                    'label': 'Хисоботни қабул қилиш'
+                }
+
+            )
+        },
+        {
+            'type': 'app',
+            'name': 'mainapi',
+            'label': 'User моделлари (3-қисим)',
+            'icon': 'fa fa-lock',
+            'default_open': False,
+            'models': (
+                {
+                    'name': 'university',
+                    'label': 'Университет тадқиқотлари'
+                },
+                {
+                    'name': 'news',
+                    'label': 'Олиб борилаётган ишлар'
+                },
+            )
+        },
+        {
+            'type': 'app',
+            'name': 'mainapi',
+            'label': 'Минерал ресурслар базаси (Excel)',
+            'icon': 'fa fa-lock',
+            'default_open': False,
+            'models': (
+                {
+                    'name': 'excelform',
+                    'label': 'Минерал ресурслар базаси'
+                },
+            )
+        },
+        {
+            'type': 'app',
+            'name': 'mainapi',
+            'label': 'Буғалтерия хисоботлари',
+            'icon': 'fa fa-table',
+            'default_open': False,
+            'models': (
+                {
+                    'name': 'bookkeepingreport',
+                    'label': 'Буғалтерия хисоботлари'
+                },
+            )
+        },
+
+        {'type': 'title', 'label': 'Contents', 'apps': ('flatpages', )},
+        {'type': 'model', 'label': 'Pages', 'name': 'flatpage', 'app': 'flatpages'},
+        # {'type': 'free', 'label': 'Custom Link', 'url': 'http://www.google.it', 'perms': ('flatpages.add_flatpage', 'auth.change_user') },
+    ),
+}

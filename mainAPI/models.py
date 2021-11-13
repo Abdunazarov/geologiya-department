@@ -9,8 +9,8 @@ class Navbar(models.Model):
     child_items = models.ManyToManyField('NavbarItem', related_name='navitems', verbose_name='child_item')
 
     class Meta:
-        verbose_name_plural = 'Navbar (Elem)'
-        verbose_name = 'Navbar (Elem)'
+        verbose_name_plural = 'Навбар (эл)'
+        verbose_name = 'Навбар (эл)'
 
     def __str__(self):
         return self.item
@@ -20,6 +20,10 @@ class NavbarItem(models.Model):
     child_item = models.CharField(max_length=50)
     url = models.CharField(max_length=500, null=True, blank=True)
     status = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = 'Навбар (эл)'
+        verbose_name = 'Навбар (эл)'
 
     def __str__(self):
         return self.child_item
@@ -35,7 +39,7 @@ class Footer(models.Model):
     sub_title = models.ManyToManyField('NavbarItem')
 
     class Meta:
-        verbose_name_plural = 'Footer'
+        verbose_name_plural = 'Футер'
 
     def __str__(self):
         return self.title
@@ -48,7 +52,7 @@ class CarouselNews(models.Model):
 
     class Meta:
         verbose_name_plural = 'Каруселлар'
-        verbose_name = 'Карусел'
+        verbose_name = 'Карусель'
 
     def __str__(self):
         return self.title
@@ -227,8 +231,8 @@ class Laws(models.Model):
     file = models.FileField()
 
     class Meta:
-        verbose_name = 'Qaror'
-        verbose_name_plural = 'Qarorlar'
+        verbose_name = 'Қарорлар'
+        verbose_name_plural = 'Қарорлар'
 
     def __str__(self):
         return f"{str(self.title)[0:25]}"
@@ -305,4 +309,16 @@ class ExcelForm(models.Model):
 
     def __str__(self):
         return self.region
+
+
+class BookkeepingReport(models.Model):
+    text = models.CharField(max_length=255)
+    excel_file = models.FileField()
+
+    class Meta:
+        verbose_name_plural = 'Буғалтерия хисоботлари'
+        verbose_name = 'Буғалтерия хисоботи'
+
+    def __str__(self):
+        return self.excel_file
 

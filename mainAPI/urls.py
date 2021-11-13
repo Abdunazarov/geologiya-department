@@ -1,4 +1,3 @@
-from django.contrib import admin
 from django.urls import path, include
 from .views import *
 from .models import *
@@ -27,7 +26,9 @@ router.register("Qarorlar", LawsViewset, basename="Qarorlar")
 router.register("Mutaxassislar-aloqasi", ProfConnectionsViewset, basename="Mutaxassislar-aloqasi")
 router.register("Hisobot-qabul-qilish", ReportAcceptanceViewset, basename="Qarorlar")
 router.register("Universitet-tadqiqotlari", UniversityViewset, basename="UnivTad")
-# router.register("Export-excel", export_excel, basename="ExpExcel")
+router.register("Export-excel", ExcelFormViewset, basename="ExpExcel")
+router.register("Yangiliklar", NewsViewset, basename="Yangiliklar")
+router.register("Buhgalteriya-hisoboti", BookkeepingReportViewset, basename="Buhgalteriya-hisoboti")
 urlpatterns = [
     path('', include(router.urls)),
 ]

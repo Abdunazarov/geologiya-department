@@ -110,3 +110,18 @@ class UniversityViewset(viewsets.ModelViewSet):
     queryset = University.objects.all()
 
 
+class ExcelFormViewset(viewsets.ModelViewSet):
+    serializer_class = ExcelFormSerializer
+    queryset = ExcelForm.objects.all()
+
+
+class NewsViewset(viewsets.ModelViewSet):
+    serializer_class = NewsSerializer
+    queryset = News.objects.all()
+
+
+class BookkeepingReportViewset(viewsets.ModelViewSet):
+    serializer_class = BookkeepingReportSerializer
+    queryset = BookkeepingReport.objects.all()
+
+
