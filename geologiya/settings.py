@@ -128,7 +128,7 @@ django_heroku.settings(locals())
 BATON = {
     'SITE_HEADER': 'Геология',
     'SITE_TITLE': 'Геология',
-    'INDEX_TITLE': 'Администрация',
+    'INDEX_TITLE': 'Геология сайти администрацияси',
     'SUPPORT_HREF': 'https://github.com/otto-torino/django-baton/issues',
     'COPYRIGHT': 'copyright © 2017 <a href="https://napaautomotive.uz/ru"> Napa Automotive</a>', # noqa
     'POWERED_BY': '<a href="https://www.instagram.com/d__abdunazarov/"> D_Abdunazarov</a>',

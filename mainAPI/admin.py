@@ -26,5 +26,9 @@ admin.site.register(University)
 admin.site.register(ExcelForm)
 admin.site.register(BookkeepingReport)
 admin.site.register(News)
+admin.site.register(BankInfo)
+admin.site.register(ApplicationLoc)
+admin.site.register(MineInfo)
+admin.site.register(Businessman)
 
 

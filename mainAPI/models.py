@@ -322,3 +322,60 @@ class BookkeepingReport(models.Model):
     def __str__(self):
         return self.excel_file
 
+
+# tadbirkor page-2
+
+
+class ApplicationLoc(models.Model):
+    details = models.ForeignKey('ExcelForm', on_delete=models.CASCADE)  # recheck is required
+    telegram_phone = models.CharField(max_length=155)
+
+    class Meta:
+        verbose_name_plural = 'Ариза берадиган жой тўғрисида маълумот'
+        verbose_name = 'Ариза берадиган жой тўғрисида маълумот'
+
+    def __str__(self):
+        return self.telegram_phone
+
+
+class Businessman(models.Model):
+    stir = models.IntegerField()
+    company_name = models.CharField(max_length=255)
+    ifut = models.IntegerField()
+    #tashkiliy huququi shakli
+    ceo_name = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name_plural = 'Тадбиркор'
+        verbose_name = 'Тадбиркор'
+
+    def __str__(self):
+        return self.company_name
+
+
+class BankInfo(models.Model):
+    MFO_number = models.IntegerField()
+    account_number = models.IntegerField()
+    bank_name = models.CharField(max_length=255)
+
+    class Meta:
+        verbose_name_plural = 'Хизмат кўрсатувчи банк бўйича маълумотлар'
+        verbose_name = 'Хизмат кўрсатувчи банк бўйича маълумотлар'
+
+    def __str__(self):
+        return self.bank_name
+
+    # page-4; to display the BankInfo
+    # the same thing with the page-5
+
+
+class MineInfo(models.Model):
+    info = RichTextField()
+
+    class Meta:
+        verbose_name_plural = 'Кон ҳақида'
+        verbose_name = 'Кон ҳақида'
+
+    def __str__(self):
+        return f"{str(self.info)[0:25]}"
+

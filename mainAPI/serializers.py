@@ -146,3 +146,27 @@ class BookkeepingReportSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class MineInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MineInfo
+        fields = '__all__'
+
+
+class BankInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BankInfo
+        fields = '__all__'
+
+
+class ApplicationLocSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ApplicationLoc
+        fields = '__all__'
+
+
+class BusinessmanSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Businessman
+        fields = '__all__'
+
+

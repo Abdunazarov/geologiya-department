@@ -125,3 +125,23 @@ class BookkeepingReportViewset(viewsets.ModelViewSet):
     queryset = BookkeepingReport.objects.all()
 
 
+class MineInfoViewset(viewsets.ModelViewSet):
+    serializer_class = MineInfoSerializer
+    queryset = MineInfo.objects.all()
+
+
+class BusinessmanNewsViewset(viewsets.ModelViewSet):
+    serializer_class = BusinessmanSerializer
+    queryset = Businessman.objects.all()
+
+
+class ApplicationLocViewset(viewsets.ModelViewSet):
+    serializer_class = ApplicationLocSerializer
+    queryset = ApplicationLoc.objects.all()
+
+
+class BankInfoViewset(viewsets.ModelViewSet):
+    serializer_class = BankInfoSerializer
+    queryset = BankInfo.objects.all()
+
+
