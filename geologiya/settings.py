@@ -1,6 +1,10 @@
 import os.path
 from pathlib import Path
 
+import dj_database_url
+import django_heroku
+from decouple import config
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -73,6 +77,9 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
@@ -118,6 +125,8 @@ STATIC_ROOT = BASE_DIR / "static_root"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+
+django_heroku.settings(locals())
 
 BATON = {
     'SITE_HEADER': 'Геология',
