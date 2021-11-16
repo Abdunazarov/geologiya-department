@@ -1,5 +1,19 @@
 from django.contrib import admin
 from .models import *
+from .models import models
+from .forms import AdminApplicationForm
+
+
+class ApplicationLocAdmin(admin.ModelAdmin):
+    form = AdminApplicationForm
+    # def region_tag(self, obj):
+    #     return obj.region.raw_materials
+    #
+    # def raw_material_tag(self, obj):
+    #     return obj.details.raw_material
+    #
+    # # list_display = ('region_tag', 'raw_material_tag')
+    # list_select_related = ('region', )
 
 
 admin.site.register(Navbar)
@@ -27,7 +41,7 @@ admin.site.register(ExcelForm)
 admin.site.register(BookkeepingReport)
 admin.site.register(News)
 admin.site.register(BankInfo)
-admin.site.register(ApplicationLoc)
+admin.site.register(ApplicationLoc, ApplicationLocAdmin)
 admin.site.register(MineInfo)
 admin.site.register(Businessman)
 

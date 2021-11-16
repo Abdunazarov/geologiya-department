@@ -327,7 +327,6 @@ class BookkeepingReport(models.Model):
 
 
 class ApplicationLoc(models.Model):
-    details = models.ForeignKey('ExcelForm', on_delete=models.CASCADE)  # recheck is required
     telegram_phone = models.CharField(max_length=155)
 
     class Meta:
