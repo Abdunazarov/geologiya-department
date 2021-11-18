@@ -330,7 +330,6 @@ class BookkeepingReport(models.Model):
 def ch(model,  item):
 
     choose = [(x.id, getattr(x, item)) for x in model.objects.all()]
-    print(choose)
     return choose
 
 
