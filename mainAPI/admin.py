@@ -1,11 +1,11 @@
 from django.contrib import admin
 from .models import *
 from .models import models
-from .forms import AdminApplicationForm
+# from .forms import AdminApplicationForm
 
 
 class ApplicationLocAdmin(admin.ModelAdmin):
-    form = AdminApplicationForm
+    # form = AdminApplicationForm
     # def region_tag(self, obj):
     #     return obj.region.raw_materials
     #
@@ -14,7 +14,7 @@ class ApplicationLocAdmin(admin.ModelAdmin):
     #
     # # list_display = ('region_tag', 'raw_material_tag')
     # list_select_related = ('region', )
-
+    pass
 
 admin.site.register(Navbar)
 admin.site.register(NavbarItem)
