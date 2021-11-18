@@ -285,9 +285,6 @@ class News(models.Model):
         return f"{str(self.text)[0:30]}"
 
 
-
-
-
 class ExcelForm(models.Model):
     resource = models.CharField(max_length=255)
     location = models.CharField(max_length=255)

@@ -1,9 +1,9 @@
 from .models import *
 from .serializers import *
 from rest_framework import viewsets
-from django.core.mail import mail_admins
-from django.views.generic.base import View
-# from rest_framework.response import Htt
+from rest_framework.views import APIView
+from utils.download_file import download
+
 
 class NavbarViewset(viewsets.ModelViewSet):
     serializer_class = NavbarSerializer
@@ -145,3 +145,41 @@ class BankInfoViewset(viewsets.ModelViewSet):
     queryset = BankInfo.objects.all()
 
 
+class DownloadXmlView(APIView):
+
+    def get(self, url, *args, **kwargs):
+        district_dt = int(url.GET.get("viloyat", 0))
+        road_district_rd = int(url.GET.get("road_district", 0))
+        plant_pt = int(url.GET.get("plant", 0))
+        pitomnik_plants = ExcelForm.objects.all()
+        _list_pitomnikdb = []
+
+        for x in pitomnik_plants:
+            _list_pitomnikdb.append(
+                tuple((str(x.condition_a_b_c1),
+                       str(x.dist) + " " + str(x.number_explot),
+                       "(" + str(int(x.condition_a_b_c2)) + "-" + str(int(x.condition_c2)) + ")km -" + str(x.location),
+                       str(x.id),
+                       str(x.raw_material),
+                       str(x.region))))
+
+        path = "main"
+        row_start_index = 8
+        column_start_index = 6
+        column_end_range = 11
+        indexing = True
+        db = list(_list_pitomnikdb)
+        print(_list_pitomnikdb, "_list_pitomnik")
+        print(path, "path")
+        print(row_start_index, "start row")
+        print(column_start_index)
+        print(column_end_range, "end column")
+        print(indexing, 'indexing')
+        return download(
+            _list_pitomnikdb,
+            path,
+            row_start_index,
+            column_start_index,
+            column_end_range,
+            indexing,
+        )
