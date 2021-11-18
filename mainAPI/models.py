@@ -327,7 +327,7 @@ class BookkeepingReport(models.Model):
 
 
 class ApplicationLoc(models.Model):
-    
+
     telegram_phone = models.CharField(max_length=155)
 
     class Meta:
