@@ -285,9 +285,6 @@ class News(models.Model):
         return f"{str(self.text)[0:30]}"
 
 
-
-
-
 class ExcelForm(models.Model):
     resource = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -302,9 +299,9 @@ class ExcelForm(models.Model):
     affiliation = models.CharField(max_length=255)
     affirmation_year = models.CharField(max_length=155)
     protocol_num = models.IntegerField()
-    raw_material = models.CharField(max_length=155) # 2
-    region = models.CharField(max_length=155) # 1
-    dist = models.CharField(max_length=155) # 3
+    raw_material = models.CharField(max_length=155)  # 2
+    region = models.CharField(max_length=155)  # 1
+    dist = models.CharField(max_length=155)  # 3
 
     class Meta:
         verbose_name_plural = "Excel формалар"
@@ -323,13 +320,12 @@ class BookkeepingReport(models.Model):
         verbose_name = 'Буғалтерия хисоботи'
 
     def __str__(self):
-        return self.excel_file
+        return self.text
 
 
 # tadbirkor page-2
 def ch(model,  item):
     choose = [(getattr(x, item), getattr(x, item)) for x in model.objects.all()]
-    print(choose)
     return choose
 
 

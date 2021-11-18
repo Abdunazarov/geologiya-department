@@ -123,14 +123,11 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static_root"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-
 
 
 BATON = {
-    'SITE_HEADER': 'Геология',
-    'SITE_TITLE': 'Геология',
+    'SITE_HEADER': 'ЎЗРЕС Геология',
+    'SITE_TITLE': 'Геология ахборот маркази Давлат корхонаси',
     'INDEX_TITLE': 'Геология сайти администрацияси',
     'SUPPORT_HREF': 'https://github.com/otto-torino/django-baton/issues',
     'COPYRIGHT': 'copyright © 2017 <a href="https://napaautomotive.uz/ru"> Napa Automotive</a>', # noqa
@@ -145,11 +142,11 @@ BATON = {
     'MENU_ALWAYS_COLLAPSED': False,
     'MENU_TITLE': 'Menu',
     'MESSAGES_TOASTS': False,
-    'GRAVATAR_DEFAULT_IMG': 'retro',
-    'LOGIN_SPLASH': '/static/core/img/login-splash.png',
+    'GRAVATAR_DEFAULT_IMG': 'mp',
+    'LOGIN_SPLASH': 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fsitara.com%2Ftours%2Felement%2Fuzbekistan-geology-tour%2F&psig=AOvVaw3rq30RSO3WhXu2SPPjeUxw&ust=1637321165868000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIDqqunmofQCFQAAAAAdAAAAABAD',
     'SEARCH_FIELD': {
         'label': 'Search contents...',
-        'url': '/search/',
+        'url': '/api/',
     },
     'MENU': (
         { 'type': 'title', 'label': 'main', 'apps': ('auth', ) },
@@ -271,29 +268,32 @@ BATON = {
                 },
             )
         },
+
+        {'type': 'model', 'label': 'Минерал ресурслар базаси', 'name': 'excelform', 'app': 'mainapi', 'icon': 'fas fa-file-excel'},
+        { 'type': 'model', 'label': 'Буғалтерия хисоботлари', 'name': 'bookkeepingreport', 'app': 'mainapi', 'icon': 'fa fa-table' },
+
         {
             'type': 'app',
             'name': 'mainapi',
-            'label': 'Минерал ресурслар базаси (Excel)',
+            'label': 'Page Тадбиркор',
             'icon': 'fa fa-lock',
             'default_open': False,
             'models': (
                 {
-                    'name': 'excelform',
-                    'label': 'Минерал ресурслар базаси'
+                    'name': 'applicationloc',
+                    'label': 'Ариза берадиган жой тўғрисида маълумот'
                 },
-            )
-        },
-        {
-            'type': 'app',
-            'name': 'mainapi',
-            'label': 'Буғалтерия хисоботлари',
-            'icon': 'fa fa-table',
-            'default_open': False,
-            'models': (
                 {
-                    'name': 'bookkeepingreport',
-                    'label': 'Буғалтерия хисоботлари'
+                    'name': 'businessman',
+                    'label': 'Тадбиркор'
+                },
+                {
+                    'name': 'bankinfo',
+                    'label': 'Хизмат кўрсатувчи банк бўйича маълумотлар'
+                },
+                {
+                    'name': 'mineinfo',
+                    'label': 'Кон ҳақида'
                 },
             )
         },
@@ -304,6 +304,9 @@ BATON = {
         # {'type': 'free', 'label': 'Custom Link', 'url': 'http://www.google.it', 'perms': ('flatpages.add_flatpage', 'auth.change_user') },
     ),
 }
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)

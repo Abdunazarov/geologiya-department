@@ -28,8 +28,9 @@ router.register("Hisobot-qabul-qilish", ReportAcceptanceViewset, basename="Qaror
 router.register("Universitet-tadqiqotlari", UniversityViewset, basename="UnivTad")
 router.register("Export-excel", ExcelFormViewset, basename="ExpExcel")
 router.register("Yangiliklar", NewsViewset, basename="Yangiliklar")
+router.register("Buhgalteriya", BookkeepingReportViewset, basename="Buhgalteriya-hisobotlari")
 router.register("Ariza-manzili", ApplicationLocViewset, basename="Ariza-manzili")
-router.register("Buhgalteriya-hisoboti", BusinessmanNewsViewset, basename="Tadbirkor")
+router.register("Tadbirkor", BusinessmanNewsViewset, basename="Tadbirkor")
 router.register("Bank-haqida", BankInfoViewset, basename="Bank-haqida")
 router.register("Kon-haqida", MineInfoViewset, basename="Kon-haqida")
 
