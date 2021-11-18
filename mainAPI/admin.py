@@ -14,7 +14,7 @@ class ApplicationLocAdmin(admin.ModelAdmin):
     #
     # # list_display = ('region_tag', 'raw_material_tag')
     # list_select_related = ('region', )
-
+    # pass
 
 admin.site.register(Navbar)
 admin.site.register(NavbarItem)
@@ -44,5 +44,3 @@ admin.site.register(BankInfo)
 admin.site.register(ApplicationLoc, ApplicationLocAdmin)
 admin.site.register(MineInfo)
 admin.site.register(Businessman)
-
-
