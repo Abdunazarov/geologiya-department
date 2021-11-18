@@ -285,6 +285,9 @@ class News(models.Model):
         return f"{str(self.text)[0:30]}"
 
 
+
+
+
 class ExcelForm(models.Model):
     resource = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -299,9 +302,9 @@ class ExcelForm(models.Model):
     affiliation = models.CharField(max_length=255)
     affirmation_year = models.CharField(max_length=155)
     protocol_num = models.IntegerField()
-    raw_material = models.CharField(max_length=155)
-    region = models.CharField(max_length=155)
-    dist = models.CharField(max_length=155)
+    raw_material = models.CharField(max_length=155) # 2
+    region = models.CharField(max_length=155) # 1
+    dist = models.CharField(max_length=155) # 3
 
     class Meta:
         verbose_name_plural = "Excel формалар"
@@ -324,10 +327,17 @@ class BookkeepingReport(models.Model):
 
 
 # tadbirkor page-2
+def ch(model,  item):
+
+    choose = [(x.id, getattr(x, item)) for x in model.objects.all()]
+    print(choose)
+    return choose
 
 
 class ApplicationLoc(models.Model):
-
+    raw_material = models.CharField(null=True, max_length=500, choices=ch(model=ExcelForm, item="raw_material"))
+    region = models.CharField(null=True, max_length=250, choices=ch(model=ExcelForm, item="region"))
+    dist = models.CharField(null=True, max_length=250, choices=ch(model=ExcelForm, item="dist"))
     telegram_phone = models.CharField(max_length=155)
 
     class Meta:
