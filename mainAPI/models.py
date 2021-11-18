@@ -328,8 +328,8 @@ class BookkeepingReport(models.Model):
 
 # tadbirkor page-2
 def ch(model,  item):
-
-    choose = [(x.id, getattr(x, item)) for x in model.objects.all()]
+    choose = [(getattr(x, item), getattr(x, item)) for x in model.objects.all()]
+    print(choose)
     return choose
 
 
@@ -351,7 +351,7 @@ class Businessman(models.Model):
     stir = models.IntegerField()
     company_name = models.CharField(max_length=255)
     ifut = models.IntegerField()
-    #tashkiliy huququi shakli
+    # tashkiliy huququi shakli
     ceo_name = models.CharField(max_length=255)
 
     class Meta:
