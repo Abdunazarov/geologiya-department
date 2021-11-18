@@ -44,5 +44,3 @@ admin.site.register(BankInfo)
 admin.site.register(ApplicationLoc, ApplicationLocAdmin)
 admin.site.register(MineInfo)
 admin.site.register(Businessman)
-
-
