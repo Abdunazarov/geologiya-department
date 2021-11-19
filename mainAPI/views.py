@@ -156,25 +156,25 @@ class DownloadXmlView(APIView):
 
         for x in pitomnik_plants:
             _list_pitomnikdb.append(
-                tuple((str(x.condition_a_b_c1),
-                       str(x.dist) + " " + str(x.number_explot),
-                       "(" + str(int(x.condition_a_b_c2)) + "-" + str(int(x.condition_c2)) + ")km -" + str(x.location),
-                       str(x.id),
-                       str(x.raw_material),
-                       str(x.region))))
+                tuple((str(x.resource),
+                       str(x.condition_a_b_c1), str(x.condition_c2),
+                       str(int(x.condition_c2)), str(x.exploitation),
+                       str(x.absorption_level),
+                       str(x.number_explot),
+                       str(x.license))))
 
-        path = "main"
+        path = "mn"
         row_start_index = 8
-        column_start_index = 6
-        column_end_range = 11
+        column_start_index = 2
+        column_end_range = 7
         indexing = True
         db = list(_list_pitomnikdb)
-        print(_list_pitomnikdb, "_list_pitomnik")
-        print(path, "path")
-        print(row_start_index, "start row")
-        print(column_start_index)
-        print(column_end_range, "end column")
-        print(indexing, 'indexing')
+        # print(_list_pitomnikdb, "_list_pitomnik")
+        # print(path, "path")
+        # print(row_start_index, "start row")
+        # print(column_start_index)
+        # print(column_end_range, "end column")
+        # print(indexing, 'indexing')
         return download(
             _list_pitomnikdb,
             path,

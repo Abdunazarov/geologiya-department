@@ -3,6 +3,13 @@ from django.contrib.auth.models import AbstractUser
 from ckeditor.fields import RichTextField
 
 
+"""
+ Custom User:
+        email: 
+        phone_number(mo: 
+        
+"""
+
 class Navbar(models.Model):
     item = models.CharField(max_length=50)
     url = models.CharField(max_length=500, blank=True, null=True)
@@ -326,7 +333,6 @@ class BookkeepingReport(models.Model):
 # tadbirkor page-2
 def ch(model,  item):
     choose = [(getattr(x, item), getattr(x, item)) for x in model.objects.all()]
-    print(choose)
     return choose
 
 
