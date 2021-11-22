@@ -384,3 +384,4 @@ class MineInfo(models.Model):
     def __str__(self):
         return f"{str(self.info)[0:25]}"
 
+
