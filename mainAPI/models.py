@@ -3,6 +3,13 @@ from django.contrib.auth.models import AbstractUser
 from ckeditor.fields import RichTextField
 
 
+"""
+ Custom User:
+        email: 
+        phone_number(mo: 
+        
+"""
+
 class Navbar(models.Model):
     item = models.CharField(max_length=50)
     url = models.CharField(max_length=500, blank=True, null=True)

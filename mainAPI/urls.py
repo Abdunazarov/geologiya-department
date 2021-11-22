@@ -34,7 +34,7 @@ router.register("Tadbirkor", BusinessmanNewsViewset, basename="Tadbirkor")
 router.register("Bank-haqida", BankInfoViewset, basename="Bank-haqida")
 router.register("Kon-haqida", MineInfoViewset, basename="Kon-haqida")
 
-
 urlpatterns = [
     path('', include(router.urls)),
+    path('download/', DownloadXmlView.as_view())
 ]
