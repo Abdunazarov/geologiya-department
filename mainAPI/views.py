@@ -145,34 +145,34 @@ class BankInfoViewset(viewsets.ModelViewSet):
     queryset = BankInfo.objects.all()
 
 
-class DownloadXmlView(APIView):
-
-    def get(self, url, *args, **kwargs):
-        excel_objects = ExcelForm.objects.all()
-        list_excel = []
-
-        for x in excel_objects:
-            list_excel.append(
-                tuple((str(x.resource),
-                       str(x.condition_a_b_c1), str(x.condition_c2),
-                       str(int(x.condition_c2)), str(x.exploitation),
-                       str(x.absorption_level),
-                       str(x.number_explot),
-                       str(x.license))))
-
-        path = "mn"
-        row_start_index = 8
-        column_start_index = 2
-        column_end_range = 7
-        indexing = True
-        db = list(list_excel)
-
-        return download(
-            list_excel,
-            path,
-            row_start_index,
-            column_start_index,
-            column_end_range,
-            indexing,
-        )
+# class DownloadXmlView(APIView):
+#
+#     def get(self, url, *args, **kwargs):
+#         excel_objects = ExcelForm.objects.all()
+#         list_excel = []
+#
+#         for x in excel_objects:
+#             list_excel.append(
+#                 tuple((str(x.resource),
+#                        str(x.condition_a_b_c1), str(x.condition_c2),
+#                        str(int(x.condition_c2)), str(x.exploitation),
+#                        str(x.absorption_level),
+#                        str(x.number_explot),
+#                        str(x.license))))
+#
+#         path = "mn"
+#         row_start_index = 8
+#         column_start_index = 2
+#         column_end_range = 7
+#         indexing = True
+#         db = list(list_excel)
+#
+#         return download(
+#             list_excel,
+#             path,
+#             row_start_index,
+#             column_start_index,
+#             column_end_range,
+#             indexing,
+#         )
 
