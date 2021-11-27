@@ -148,14 +148,11 @@ class BankInfoViewset(viewsets.ModelViewSet):
 class DownloadXmlView(APIView):
 
     def get(self, url, *args, **kwargs):
-        district_dt = int(url.GET.get("viloyat", 0))
-        road_district_rd = int(url.GET.get("road_district", 0))
-        plant_pt = int(url.GET.get("plant", 0))
-        pitomnik_plants = ExcelForm.objects.all()
-        _list_pitomnikdb = []
+        excel_objects = ExcelForm.objects.all()
+        list_excel = []
 
-        for x in pitomnik_plants:
-            _list_pitomnikdb.append(
+        for x in excel_objects:
+            list_excel.append(
                 tuple((str(x.resource),
                        str(x.condition_a_b_c1), str(x.condition_c2),
                        str(int(x.condition_c2)), str(x.exploitation),
@@ -168,18 +165,14 @@ class DownloadXmlView(APIView):
         column_start_index = 2
         column_end_range = 7
         indexing = True
-        db = list(_list_pitomnikdb)
-        # print(_list_pitomnikdb, "_list_pitomnik")
-        # print(path, "path")
-        # print(row_start_index, "start row")
-        # print(column_start_index)
-        # print(column_end_range, "end column")
-        # print(indexing, 'indexing')
+        db = list(list_excel)
+
         return download(
-            _list_pitomnikdb,
+            list_excel,
             path,
             row_start_index,
             column_start_index,
             column_end_range,
             indexing,
         )
+
