@@ -139,6 +139,7 @@ class Auditory(models.Model):
 
 
 class Staff(models.Model):
+    img  = models.ImageField()
     full_name = models.CharField(max_length=155)
     info = models.CharField(max_length=255)
 
