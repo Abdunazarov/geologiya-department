@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'mainAPI',
     'ckeditor',
     'rest_framework',
+    'rest_framework.authtoken',
     'baton.autodiscover',
 
 ]

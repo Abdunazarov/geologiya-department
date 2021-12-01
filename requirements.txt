@@ -5,6 +5,7 @@ dj-database-url==0.5.0
 Django==3.2.8
 django-baton==2.2.3
 django-ckeditor==6.1.0
+django-cors-headers==3.10.0
 django-debug-toolbar==3.1.1
 django-extensions==3.1.5
 django-heroku==0.3.1
