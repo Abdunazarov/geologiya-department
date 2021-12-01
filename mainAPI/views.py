@@ -145,6 +145,9 @@ class BankInfoViewset(viewsets.ModelViewSet):
     queryset = BankInfo.objects.all()
 
 
+from openpyxl import Workbook
+
+
 class DownloadXmlView(APIView):
 
     def get(self, url, *args, **kwargs):
@@ -176,6 +179,7 @@ class DownloadXmlView(APIView):
 
         path = "mn"
         row_start_index = 8
+
         # for x in range(0, obj_quantity):  # (0, 2)
         #     if x == 0:
         #         continue
