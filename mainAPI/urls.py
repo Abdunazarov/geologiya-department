@@ -1,5 +1,6 @@
 from django.urls import path, include
 from .views import *
+from .register_view import RegisterView
 from .models import *
 from rest_framework.routers import DefaultRouter
 
@@ -36,5 +37,6 @@ router.register("Kon-haqida", MineInfoViewset, basename="Kon-haqida")
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('register/', RegisterView.as_view()),
     path('download/', DownloadXmlView.as_view())
 ]
