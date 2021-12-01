@@ -302,6 +302,7 @@ class ExcelForm(models.Model):
     exploitation = models.CharField(max_length=255)
     absorption_level = models.CharField(max_length=255)
     number_explot = models.CharField(max_length=155)
+    income_2019 = models.CharField(max_length=155)
     license = models.DateField()
     prod_quantity = models.FloatField()
     affiliation = models.CharField(max_length=255)

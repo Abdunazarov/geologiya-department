@@ -36,5 +36,5 @@ router.register("Kon-haqida", MineInfoViewset, basename="Kon-haqida")
 
 urlpatterns = [
     path('', include(router.urls)),
-    # path('download/', DownloadXmlView.as_view())
+    path('download/', DownloadXmlView.as_view())
 ]

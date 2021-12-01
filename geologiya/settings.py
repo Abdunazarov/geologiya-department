@@ -142,7 +142,7 @@ BATON = {
     'MENU_ALWAYS_COLLAPSED': False,
     'MENU_TITLE': 'Menu',
     'MESSAGES_TOASTS': False,
-    'GRAVATAR_DEFAULT_IMG': 'mp',
+    'GRAVATAR_DEFAULT_IMG': '404',
     'LOGIN_SPLASH': 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fsitara.com%2Ftours%2Felement%2Fuzbekistan-geology-tour%2F&psig=AOvVaw3rq30RSO3WhXu2SPPjeUxw&ust=1637321165868000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCIDqqunmofQCFQAAAAAdAAAAABAD',
     'SEARCH_FIELD': {
         'label': 'Search contents...',
@@ -305,7 +305,6 @@ BATON = {
     ),
 }
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 
 
 db_from_env = dj_database_url.config(conn_max_age=600)
