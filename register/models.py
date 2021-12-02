@@ -29,8 +29,19 @@ class CustomUserManager(BaseUserManager):
 
 class CustomUser(AbstractUser):
     username = None
+    inn = models.CharField(max_length=100)
+    name_parsed = models.CharField(max_length=250)
+    category_business = models.CharField(max_length=500)
+    city = models.CharField(max_length=10)
+    cn = models.CharField(max_length=100)
     email = models.EmailField(_('email address'), unique=True)
     image = models.ImageField(default="/default.jpg")
+    organization = models.CharField(max_length=500)
+    serial_number = models.CharField(max_length=100)
+    type = models.CharField(max_length=10)
+    path = models.CharField(max_length=250)
+    valid_form = models.DateTimeField(null=True)
+    valid_to = models.DateTimeField(null=True)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -38,3 +49,4 @@ class CustomUser(AbstractUser):
 
     def __str__(self):
         return self.email
+

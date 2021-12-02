@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mainAPI',
+    'register',
     'ckeditor',
     'rest_framework',
     'rest_framework.authtoken',
@@ -136,7 +137,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+AUTH_USER_MODEL = 'register.CustomUser'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR / "static_root"
