@@ -1,3 +1,5 @@
+import openpyxl
+
 from .models import *
 from .serializers import *
 from rest_framework import viewsets
@@ -154,8 +156,6 @@ class DownloadXmlView(APIView):
         excel_objects = ExcelForm.objects.all()
         list_excel = []
 
-        obj_quantity = len(ExcelForm.objects.all())
-
         for x in excel_objects:
             list_excel.append(
                 tuple((
@@ -177,16 +177,9 @@ class DownloadXmlView(APIView):
                      # str(x.dist),
                     )))
 
+        name_cell = ExcelForm.objects.get(region=ExcelForm.objects.last())
         path = "mn"
         row_start_index = 8
-
-        # for x in range(0, obj_quantity):  # (0, 2)
-        #     if x == 0:
-        #         continue
-        #     elif x % 2 == 0 or x == 1:
-        #         row_start_index += 1
-        #     else:
-        #         row_start_index += 2
 
         column_start_index = 2
         column_end_range = 11

@@ -8,7 +8,8 @@ from openpyxl.styles import Border, Side
 from openpyxl import load_workbook, Workbook
 
 from geologiya.settings import BASE_DIR
-
+from mainAPI.models import ExcelForm
+import openpyxl
 
 def download(
         data, path, row_start_index, column_start_index, column_end_range, indexing
@@ -42,6 +43,18 @@ def download(
             x.border = border
 
     book.save(file_path)
+
+    # name_cell = ExcelForm.objects.last().affiliation
+    # ws = openpyxl.load_workbook(file_path)
+    # workbook = ws.active
+    # number = 1
+    # for row in workbook["H{}:H{}".format(workbook.min_row, workbook.max_row)]:
+    #     number += 1
+    #     for cell in row:
+    #         if cell.value == name_cell:
+    #             print(f"The last cell's address is --- {number}")
+    #
+
 
     content_type_value = "application/vnd.ms-excel"
     if os.path.exists(file_path):
