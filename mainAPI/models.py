@@ -1,14 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from ckeditor.fields import RichTextField
 
 
-"""
- Custom User:
-        email: 
-        phone_number(mo: 
-        
-"""
+# class CustomUser(User):
+
+
 
 class Navbar(models.Model):
     item = models.CharField(max_length=50)
@@ -334,8 +331,10 @@ class BookkeepingReport(models.Model):
 
 # tadbirkor page-2
 def ch(model,  item):
-    choose = [(getattr(x, item), getattr(x, item)) for x in model.objects.all()]
-    return choose
+    try:
+        choose = [(getattr(x, item), getattr(x, item)) for x in model.objects.all()]
+    except:
+        choose = [(1, "some"), (2, "error")]
 
 
 class ApplicationLoc(models.Model):

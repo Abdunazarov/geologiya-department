@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import *
 
 
+
 class NavbarItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = NavbarItem

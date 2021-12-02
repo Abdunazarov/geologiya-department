@@ -1,10 +1,11 @@
 import datetime
-
+from django.contrib.auth import get_user_model
+from django.core.exceptions import ObjectDoesNotExist
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from django.contrib.auth import get_user_model
 from rest_framework.permissions import AllowAny
 from rest_framework.authtoken.models import Token
+from .serializers import CustomUserSerializer
 
 
 class RegisterView(APIView):
@@ -13,13 +14,15 @@ class RegisterView(APIView):
 
     def post(self, request):
         data = request.data
-        print(data)
-        user = get_user_model().objects.create(email=data['email'], username=data['email'])
-        user.set_password(data['token'])
-        user.save()
-        tk = Token.objects.create(user_id=user.id, key=data['token'])
-        tk.save()
-        return Response(status=200, data={'key': tk.key})
+        data['password'] = data['token']
+        serialize = CustomUserSerializer(data=data)
+        if serialize.is_valid():
+            serialize.save()
+            tk = Token.objects.create(user_id=serialize.data['id'], key=data['token'])
+            tk.save()
+            return Response(serialize.data)
+        else:
+            return Response(serialize.errors)
 
 
 class ApiToken(APIView):
@@ -31,5 +34,5 @@ class ApiToken(APIView):
             user.objects.get(email=email)
             return Response({'data': {'status': 'error', 'cause': f'{email} already exists'}})
 
-        except:
+        except ObjectDoesNotExist:
             return Response({"status": "ok"})
