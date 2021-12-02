@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
     'baton.autodiscover',
 
 ]
@@ -65,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # cors headers
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'geologiya.urls'
@@ -169,24 +172,12 @@ BATON = {
         'url': '/api/',
     },
     'MENU': (
-        { 'type': 'title', 'label': 'main', 'apps': ('auth', ) },
-        {
-            'type': 'app',
-            'name': 'auth',
-            'label': 'Authentication',
-            'icon': 'fa fa-address-card',
-            'default_open': False,
-            'models': (
-                {
-                    'name': 'user',
-                    'label': 'Users'
-                },
-                {
-                    'name': 'group',
-                    'label': 'Groups'
-                },
-            )
-        },
+        { 'type': 'title', 'label': 'main', 'apps': ('auth', 'register') },
+        {'type': 'free', 'icon': 'fa fa-lock', 'label': 'Authentication', 'default_open': True, 'children': [
+            {'type': 'model', 'label': 'Tadbirkorlar', 'name': 'customuser', 'app': 'register'},
+            {'type': 'model', 'label': 'Groups', 'name': 'group', 'app': 'auth'},
+            {'type': 'model', 'label': 'Permissions', 'name': 'permission', 'app': 'auth'},
+        ]},
         {
             'type': 'app',
             'name': 'mainapi',
@@ -324,6 +315,7 @@ BATON = {
     ),
 }
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 db_from_env = dj_database_url.config(conn_max_age=600)
