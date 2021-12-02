@@ -1,14 +1,11 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, User
 from ckeditor.fields import RichTextField
 
 
-"""
- Custom User:
-        email: 
-        phone_number(mo: 
-        
-"""
+# class CustomUser(User):
+
+
 
 class Navbar(models.Model):
     item = models.CharField(max_length=50)
