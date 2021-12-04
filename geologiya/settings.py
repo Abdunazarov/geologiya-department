@@ -142,8 +142,9 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'register.CustomUser'
 STATIC_URL = '/static/'
-
-STATIC_ROOT = BASE_DIR / "static_root"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media_root/'
+STATIC_ROOT = BASE_DIR / "/static_root/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
