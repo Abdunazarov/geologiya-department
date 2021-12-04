@@ -3,10 +3,6 @@ from django.contrib.auth.models import AbstractUser, User
 from ckeditor.fields import RichTextField
 
 
-# class CustomUser(User):
-
-
-
 class Navbar(models.Model):
     item = models.CharField(max_length=50)
     url = models.CharField(max_length=500, blank=True, null=True)
