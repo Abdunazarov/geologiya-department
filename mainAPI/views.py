@@ -139,6 +139,8 @@ class NewsViewset(viewsets.ModelViewSet):
 class BookkeepingReportViewset(viewsets.ModelViewSet):
     serializer_class = BookkeepingReportSerializer
     queryset = BookkeepingReport.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class MineInfoViewset(viewsets.ModelViewSet):
