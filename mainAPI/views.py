@@ -3,31 +3,43 @@ from .serializers import *
 from rest_framework import viewsets
 from rest_framework.views import APIView
 from utils.download_file import download
+from rest_framework.permissions import AllowAny
 
 
 class NavbarViewset(viewsets.ModelViewSet):
     serializer_class = NavbarSerializer
     queryset = Navbar.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class NavbarItemViewset(viewsets.ModelViewSet):
     serializer_class = NavbarItemSerializer
     queryset = NavbarItem.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class FooterViewset(viewsets.ModelViewSet):
     serializer_class = FooterSerializer
     queryset = Footer.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class MineralResourcesViewset(viewsets.ModelViewSet):
     serializer_class = MineralResourcesSerializer
     queryset = MineralResources.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
+
 
 
 class TwoMapsViewset(viewsets.ModelViewSet):
     serializer_class = TwoMapsSerializer
     queryset = TwoMaps.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class CompanyPurposeViewset(viewsets.ModelViewSet):
@@ -68,6 +80,8 @@ class YouthUnionViewset(viewsets.ModelViewSet):
 class GeoInfoViewset(viewsets.ModelViewSet):
     serializer_class = GeoInfoSerializer
     queryset = GeoInfo.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ResourceBaseViewset(viewsets.ModelViewSet):
@@ -118,6 +132,8 @@ class ExcelFormViewset(viewsets.ModelViewSet):
 class NewsViewset(viewsets.ModelViewSet):
     serializer_class = NewsSerializer
     queryset = News.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class BookkeepingReportViewset(viewsets.ModelViewSet):
