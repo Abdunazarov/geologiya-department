@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'ckeditor',
     'rest_framework',
     'rest_framework.authtoken',
-    'corsheaders',
     'baton.autodiscover',
 
 ]

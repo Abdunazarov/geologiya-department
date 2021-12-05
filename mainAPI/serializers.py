@@ -171,3 +171,7 @@ class BusinessmanSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class RawMaterialSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RawMaterial
+        fields = '__all__'

@@ -3,10 +3,6 @@ from django.contrib.auth.models import AbstractUser, User
 from ckeditor.fields import RichTextField
 
 
-# class CustomUser(User):
-
-
-
 class Navbar(models.Model):
     item = models.CharField(max_length=50)
     url = models.CharField(max_length=500, blank=True, null=True)
@@ -291,7 +287,8 @@ class News(models.Model):
 
 
 class ExcelForm(models.Model):
-    resource = models.CharField(max_length=255)
+    # raw_material = models.ForeignKey('RawMaterial', on_delete=models.CASCADE, null=True)
+    sub_raw_material = models.ForeignKey('SubMaterial', on_delete=models.CASCADE, null=True)
     location = models.CharField(max_length=255)
     condition_a_b_c1 = models.CharField(max_length=155)
     condition_a_b_c2 = models.CharField(max_length=155)
@@ -305,7 +302,7 @@ class ExcelForm(models.Model):
     affiliation = models.CharField(max_length=255)
     affirmation_year = models.CharField(max_length=155)
     protocol_num = models.IntegerField()
-    raw_material = models.CharField(max_length=155)  # 2
+    # raw_material = models.CharField(max_length=155) Raw-material itself
     region = models.CharField(max_length=155)  # 1
     dist = models.CharField(max_length=155)  # 3
 
@@ -315,6 +312,22 @@ class ExcelForm(models.Model):
 
     def __str__(self):
         return self.region
+
+
+class RawMaterial(models.Model):
+    rawmaterial = models.CharField(max_length=155, null=True)
+
+    def __str__(self):
+        return self.rawmaterial
+
+
+class SubMaterial(models.Model):
+    submaterial = models.CharField(max_length=155, null=True)
+    parent = models.ForeignKey('RawMaterial', models.CASCADE)
+
+    def __str__(self):
+        return self.submaterial
+
 
 
 class BookkeepingReport(models.Model):

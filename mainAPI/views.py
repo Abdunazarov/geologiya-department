@@ -155,6 +155,33 @@ class DownloadXmlView(APIView):
     def get(self, url, *args, **kwargs):
         excel_objects = ExcelForm.objects.all()
         list_excel = []
+        raws = RawMaterial.objects.all()
+        subs = SubMaterial.objects.all()
+        # for raw in raws:
+        #     print(raw.rawmaterial)
+        #     for sub in subs:
+        #         print("    ", sub.submaterial)
+        #         for excel in excel_objects:
+        #             if sub.id == excel.sub_raw_material.id and raw.id == excel.raw_material.id:
+        #                 print("        ", excel.region)
+
+        _list_raws = []
+        _list_sub = []
+        _final_raws = []
+        _final_subs = []
+        _final_region = []
+        for excel in excel_objects:
+            raw = excel.sub_raw_material.parent.rawmaterial
+            sub = excel.sub_raw_material.submaterial
+            # _list_raws.append(raw)
+            # _list_sub.append(sub)
+            if sub not in _list_sub and raw not in _list_raws:
+                _list_raws.append(raw)
+                _list_sub.append(sub)
+            else:
+                continue
+            print(f"{excel.sub_raw_material.parent.rawmaterial}\n    {excel.sub_raw_material.submaterial}\n"
+                  f"           {excel.region}")
 
         for x in excel_objects:
             list_excel.append(
@@ -177,7 +204,7 @@ class DownloadXmlView(APIView):
                      # str(x.dist),
                     )))
 
-        name_cell = ExcelForm.objects.get(region=ExcelForm.objects.last())
+        # name_cell = ExcelForm.objects.get(region=ExcelForm.objects.last())
         path = "mn"
         row_start_index = 8
 
@@ -195,4 +222,8 @@ class DownloadXmlView(APIView):
             indexing,
         )
 
+
+class RawMaterialViewset(viewsets.ModelViewSet):
+    serializer_class = RawMaterialSerializer
+    queryset = RawMaterial.objects.all()
 
