@@ -2,15 +2,17 @@ from .models import *
 from .serializers import *
 from rest_framework import viewsets
 from rest_framework.views import APIView
+from rest_framework.response import Response
 from utils.download_file import download
 from rest_framework.permissions import AllowAny
+from openpyxl import Workbook
 
 
 class NavbarViewset(viewsets.ModelViewSet):
     serializer_class = NavbarSerializer
     queryset = Navbar.objects.all()
-    permission_classes = [AllowAny]
     authentication_classes = []
+    permission_classes = [AllowAny]
 
 
 class NavbarItemViewset(viewsets.ModelViewSet):
@@ -34,7 +36,6 @@ class MineralResourcesViewset(viewsets.ModelViewSet):
     authentication_classes = []
 
 
-
 class TwoMapsViewset(viewsets.ModelViewSet):
     serializer_class = TwoMapsSerializer
     queryset = TwoMaps.objects.all()
@@ -47,14 +48,18 @@ class CompanyPurposeViewset(viewsets.ModelViewSet):
     queryset = CompanyPurpose.objects.all()
 
 
-class CompanyTasksViewset(viewsets.ModelViewSet):
+class CompanyTasksViewset(APIView):
     serializer_class = CompanyTasksSerializer
     queryset = CompanyTasks.objects.all()
 
+    def get(self, request):
+        serialized = self.serializer_class(self.queryset.all(), many=True)
+        cp = serialized.data.copy()
+        for data in self.queryset.all():
+            serialized_item = CompanyTasksItemsSerializer(data.company_tasks_items.all(), many=True)
+            cp.append({"items": serialized_item.data})
 
-class CompanyTasksItemsViewset(viewsets.ModelViewSet):
-    serializer_class = CompanyTasksItemsSerializer
-    queryset = CompanyTasksItems.objects.all()
+        return Response(cp)
 
 
 class AuditoryViewset(viewsets.ModelViewSet):
@@ -75,6 +80,8 @@ class ProjectExpertiseViewset(viewsets.ModelViewSet):
 class YouthUnionViewset(viewsets.ModelViewSet):
     serializer_class = YouthUnionSerializer
     queryset = YouthUnion.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class GeoInfoViewset(viewsets.ModelViewSet):
@@ -161,9 +168,6 @@ class ApplicationLocViewset(viewsets.ModelViewSet):
 class BankInfoViewset(viewsets.ModelViewSet):
     serializer_class = BankInfoSerializer
     queryset = BankInfo.objects.all()
-
-
-from openpyxl import Workbook
 
 
 class DownloadXmlView(APIView):
