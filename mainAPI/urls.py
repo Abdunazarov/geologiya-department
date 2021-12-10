@@ -33,6 +33,7 @@ router.register("Ariza-manzili", ApplicationLocViewset, basename="Ariza-manzili"
 router.register("Tadbirkor", BusinessmanNewsViewset, basename="Tadbirkor")
 router.register("Bank-haqida", BankInfoViewset, basename="Bank-haqida")
 router.register("Kon-haqida", MineInfoViewset, basename="Kon-haqida")
+router.register("Material", RawMaterialViewset, basename="Material")
 
 urlpatterns = [
     path('', include(router.urls)),

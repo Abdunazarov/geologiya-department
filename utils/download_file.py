@@ -8,7 +8,8 @@ from openpyxl.styles import Border, Side
 from openpyxl import load_workbook, Workbook
 
 from geologiya.settings import BASE_DIR
-
+from mainAPI.models import ExcelForm
+import openpyxl
 
 def download(
         data, path, row_start_index, column_start_index, column_end_range, indexing
@@ -28,20 +29,31 @@ def download(
     shablon_path = os.path.join(BASE_DIR, "excel_template", path) + ".xlsx"
     book = load_workbook(shablon_path)
     sheet = book.active
-    print(len(data))
+    # print(len(data))
     border = Border(top=Side(border_style='thin', color='FF000000'),
                     right=Side(border_style='thin', color='FF000000'),
                     bottom=Side(border_style='thin', color='FF000000'),
                     left=Side(border_style='thin', color='FF000000'))
     for i in range(row_start_index, len(data) + row_start_index):
-        print(row_start_index, i, row_start_index)
+        # print(row_start_index, i, row_start_index)
         for j in range(column_start_index, column_end_range + 1):
-            print(column_start_index, j, column_end_range)
+            # print(column_start_index, j, column_end_range)
             x = sheet.cell(row=i, column=j)
             x.value = data[i - row_start_index][j - column_start_index]
             x.border = border
 
     book.save(file_path)
+
+    # name_cell = ExcelForm.objects.last().affiliation
+    # ws = openpyxl.load_workbook(file_path)
+    # workbook = ws.active
+    # number = 1
+    # for row in workbook["H{}:H{}".format(workbook.min_row, workbook.max_row)]:
+    #     number += 1
+    #     for cell in row:
+    #         if cell.value == name_cell:
+    #             print(f"The last cell's address is --- {number}")
+    #
 
     content_type_value = "application/vnd.ms-excel"
     if os.path.exists(file_path):

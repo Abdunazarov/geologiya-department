@@ -1,18 +1,9 @@
 from django.contrib import admin
 from .models import *
-from django import forms
-
-from .models import models
-
-#
-# @admin.register(ExcelForm)
-# class MyModel(admin.ModelAdmin):
-#     class form(forms.ModelForm):
-#         address = forms.BooleanField(widget=MapWidget(),)
 
 
 class ExcelModelAdmin(admin.ModelAdmin):
-    list_display = ("resource", "raw_material", "location", "region", "affiliation", "affirmation_year" )
+    list_display = ("location", "region", "affiliation", "affirmation_year" )
 
 
 admin.site.register(ExcelForm, ExcelModelAdmin)
@@ -46,3 +37,6 @@ admin.site.register(BankInfo)
 admin.site.register(ApplicationLoc)
 admin.site.register(MineInfo)
 admin.site.register(Businessman)
+admin.site.register(RawMaterial)
+admin.site.register(SubMaterial)
+
