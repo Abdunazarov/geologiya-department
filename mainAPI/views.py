@@ -54,12 +54,8 @@ class CompanyTasksViewset(APIView):
 
     def get(self, request):
         serialized = self.serializer_class(self.queryset.all(), many=True)
-        cp = serialized.data.copy()
-        for data in self.queryset.all():
-            serialized_item = CompanyTasksItemsSerializer(data.company_tasks_items.all(), many=True)
-            cp.append({"items": serialized_item.data})
 
-        return Response(cp)
+        return Response(serialized.data)
 
 
 class AuditoryViewset(viewsets.ModelViewSet):
@@ -181,23 +177,23 @@ class DownloadXmlView(APIView):
         for x in excel_objects:
             list_excel.append(
                 tuple((
-                     str(x.location),
-                     str(x.condition_a_b_c1),
-                     str(x.condition_c2),
-                     # str(x.condition_a_b_c2),
-                     str(x.absorption_level),
-                     str(x.license),
-                     str(x.income_2019),
-                     str(x.affiliation),
-                     # str(x.exploitation),
-                     str(f"{x.affirmation_year}, {x.protocol_num}"),
-                     # str(x.number_explot),
-                     str(x.prod_quantity),
-                     # str(x.protocol_num),
-                     # str(x.raw_material),
-                     str(x.region),
-                     # str(x.dist),
-                    )))
+                    str(x.location),
+                    str(x.condition_a_b_c1),
+                    str(x.condition_c2),
+                    # str(x.condition_a_b_c2),
+                    str(x.absorption_level),
+                    str(x.license),
+                    str(x.income_2019),
+                    str(x.affiliation),
+                    # str(x.exploitation),
+                    str(f"{x.affirmation_year}, {x.protocol_num}"),
+                    # str(x.number_explot),
+                    str(x.prod_quantity),
+                    # str(x.protocol_num),
+                    # str(x.raw_material),
+                    str(x.region),
+                    # str(x.dist),
+                )))
 
         path = "mn"
         row_start_index = 8
@@ -223,5 +219,3 @@ class DownloadXmlView(APIView):
             column_end_range,
             indexing,
         )
-
-

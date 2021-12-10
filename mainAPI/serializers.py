@@ -39,15 +39,17 @@ class CompanyPurposeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class CompanyTasksSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CompanyTasks
-        fields = '__all__'
-
-
 class CompanyTasksItemsSerializer(serializers.ModelSerializer):
     class Meta:
         model = CompanyTasksItems
+        fields = '__all__'
+
+
+class CompanyTasksSerializer(serializers.ModelSerializer):
+    company_tasks_items = CompanyTasksItemsSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = CompanyTasks
         fields = '__all__'
 
 
