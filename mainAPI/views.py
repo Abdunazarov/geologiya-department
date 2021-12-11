@@ -53,8 +53,8 @@ class CompanyPurposeViewset(viewsets.ModelViewSet):
 
 
 class CompanyTasksViewset(APIView):
-    serializer_class = CompanyTasksSerializer
-    queryset = CompanyTasks.objects.all()
+    serializer_class = CompanyTasksItemsSerializer
+    queryset = CompanyTasksItems.objects.all()
     permission_classes = [AllowAny]
     authentication_classes = []
 

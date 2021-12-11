@@ -96,18 +96,6 @@ class CompanyPurpose(models.Model):
         return self.title
 
 
-class CompanyTasks(models.Model):
-    title = models.CharField(max_length=150)
-    company_tasks_items = models.ManyToManyField('CompanyTasksItems', related_name='tasksitems', verbose_name='child_item')
-
-    class Meta:
-        verbose_name_plural = 'Асосий вазифалар'
-        verbose_name = 'Асосий вазифалар'
-
-    def __str__(self):
-        return self.title
-
-
 class CompanyTasksItems(models.Model):
     text = RichTextField()
 
