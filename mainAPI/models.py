@@ -85,7 +85,6 @@ class TwoMaps(models.Model):
 
 
 class CompanyPurpose(models.Model):
-    title = models.CharField(max_length=150)
     text = RichTextField()
 
     class Meta:
@@ -93,7 +92,7 @@ class CompanyPurpose(models.Model):
         verbose_name = 'Асосий мақсадлар'
 
     def __str__(self):
-        return self.title
+        return str(self.text)[0:20]
 
 
 class CompanyTasksItems(models.Model):
@@ -310,8 +309,8 @@ class RawMaterial(models.Model):
 
 
 class SubMaterial(models.Model):
-    submaterial = models.CharField(max_length=155, null=True)
     parent = models.ForeignKey('RawMaterial', models.CASCADE)
+    submaterial = models.CharField(max_length=155, null=True)
 
     def __str__(self):
         return self.submaterial

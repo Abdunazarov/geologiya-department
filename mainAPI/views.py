@@ -55,6 +55,8 @@ class CompanyPurposeViewset(viewsets.ModelViewSet):
 class CompanyTasksViewset(viewsets.ModelViewSet):
     serializer_class = CompanyTasksItemsSerializer
     queryset = CompanyTasksItems.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class AuditoryViewset(viewsets.ModelViewSet):
@@ -204,12 +206,13 @@ class DownloadXmlView(APIView):
             raw = excel.sub_raw_material.parent.rawmaterial
             sub = excel.sub_raw_material.submaterial
 
-            list_sub.append(sub)
-            list_raws.append(raw)
-
             if sub not in list_sub and raw not in list_raws:
-                obj = tuple((raw, sub))
-                final_list.append(obj)
+                final_list.append(
+                    tuple((
+                        raw,
+                        sub
+                    ))
+                )
 
         for x in excel_objects:
             list_excel.append(

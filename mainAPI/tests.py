@@ -1,6 +1,3 @@
-from .models import ExcelForm
-
-
 # file = open("models.py", "r")
 #
 # for line in file:
@@ -13,3 +10,14 @@ from .models import ExcelForm
 # for x in obj:
 #     print(x
 # )
+
+a = 'world'
+b = 'hello'
+a2 = 'world2'
+b2 = 'hello2'
+
+t = tuple((
+    a,
+    b,
+))
+print(t)
