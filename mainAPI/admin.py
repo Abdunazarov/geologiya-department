@@ -7,8 +7,6 @@ class ExcelModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ExcelForm, ExcelModelAdmin)
-
-
 admin.site.register(Navbar)
 admin.site.register(NavbarItem)
 admin.site.register(Footer)
