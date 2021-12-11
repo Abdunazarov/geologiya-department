@@ -11,8 +11,7 @@ router.register('Footer', FooterViewset, basename='Footer')
 router.register('Mineral-resurslar', MineralResourcesViewset, basename='MinRes')
 router.register('Xaritalar', TwoMapsViewset, basename='TwoMaps')
 router.register('Asosiy-maqsadlar', CompanyPurposeViewset, basename='AsosiyMaq')
-# router.register('Asosiy-vazifalar', CompanyTasksViewset, basename='AsosiyVazifalar')
-# router.register('Asosiy-vazifalar-element', CompanyTasksItemsViewset, basename='AsosiyVazifalarElem')
+router.register('Asosiy-vazifalar', CompanyTasksViewset, basename='AsosiyVazifalar')
 router.register('Maqsadli-auditoriya', AuditoryViewset, basename='MaqsadliAud')
 router.register('Xodimlar', StaffViewset, basename='Xodimlar')
 router.register('Hujjatlar-ekspertizalari', ProjectExpertiseViewset, basename='Hujjatlar-ekspertizalari')
@@ -38,6 +37,4 @@ router.register("Material", RawMaterialViewset, basename="Material")
 urlpatterns = [
     path('', include(router.urls)),
     path('download/', DownloadXmlView.as_view()),
-    # path('Asosiy-vazifalar-element/', CompanyTasksItemsViewset.as_view()),
-    path('Asosiy-vazifalar/', CompanyTasksViewset.as_view())
 ]

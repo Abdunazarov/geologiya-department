@@ -52,16 +52,9 @@ class CompanyPurposeViewset(viewsets.ModelViewSet):
     authentication_classes = []
 
 
-class CompanyTasksViewset(APIView):
+class CompanyTasksViewset(viewsets.ModelViewSet):
     serializer_class = CompanyTasksItemsSerializer
     queryset = CompanyTasksItems.objects.all()
-    permission_classes = [AllowAny]
-    authentication_classes = []
-
-    def get(self, request):
-        serialized = self.serializer_class(self.queryset.all(), many=True)
-
-        return Response(serialized.data)
 
 
 class AuditoryViewset(viewsets.ModelViewSet):
@@ -192,38 +185,31 @@ class BankInfoViewset(viewsets.ModelViewSet):
     queryset = BankInfo.objects.all()
 
 
+class RawMaterialViewset(viewsets.ModelViewSet):
+    serializer_class = RawMaterialSerializer
+    queryset = RawMaterial.objects.all()
+
+
 class DownloadXmlView(APIView):
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
     def get(self, url, *args, **kwargs):
         excel_objects = ExcelForm.objects.all()
         list_excel = []
-        raws = RawMaterial.objects.all()
-        subs = SubMaterial.objects.all()
-        # for raw in raws:
-        #     print(raw.rawmaterial)
-        #     for sub in subs:
-        #         print("    ", sub.submaterial)
-        #         for excel in excel_objects:
-        #             if sub.id == excel.sub_raw_material.id and raw.id == excel.raw_material.id:
-        #                 print("        ", excel.region)
 
-        _list_raws = []
-        _list_sub = []
-        _final_raws = []
-        _final_subs = []
-        _final_region = []
+        list_raws = list_sub = final_list = []
+
         for excel in excel_objects:
             raw = excel.sub_raw_material.parent.rawmaterial
             sub = excel.sub_raw_material.submaterial
-            # _list_raws.append(raw)
-            # _list_sub.append(sub)
-            if sub not in _list_sub and raw not in _list_raws:
-                _list_raws.append(raw)
-                _list_sub.append(sub)
-            else:
-                continue
-            print(f"{excel.sub_raw_material.parent.rawmaterial}\n    {excel.sub_raw_material.submaterial}\n"
-                  f"           {excel.region}")
+
+            list_sub.append(sub)
+            list_raws.append(raw)
+
+            if sub not in list_sub and raw not in list_raws:
+                obj = tuple((raw, sub))
+                final_list.append(obj)
 
         for x in excel_objects:
             list_excel.append(
@@ -231,29 +217,23 @@ class DownloadXmlView(APIView):
                     str(x.location),
                     str(x.condition_a_b_c1),
                     str(x.condition_c2),
-                    # str(x.condition_a_b_c2),
                     str(x.absorption_level),
                     str(x.license),
                     str(x.income_2019),
                     str(x.affiliation),
-                    # str(x.exploitation),
                     str(f"{x.affirmation_year}, {x.protocol_num}"),
-                    # str(x.number_explot),
                     str(x.prod_quantity),
-                    # str(x.protocol_num),
-                    # str(x.raw_material),
                     str(x.region),
-                    # str(x.dist),
-                )))
+                ))
+            )
 
-        # name_cell = ExcelForm.objects.get(region=ExcelForm.objects.last())
+        print(final_list)
         path = "mn"
         row_start_index = 8
 
         column_start_index = 2
         column_end_range = 11
         indexing = True
-        db = list(list_excel)
 
         return download(
             list_excel,
@@ -262,10 +242,6 @@ class DownloadXmlView(APIView):
             column_start_index,
             column_end_range,
             indexing,
+            final_list
         )
-
-
-class RawMaterialViewset(viewsets.ModelViewSet):
-    serializer_class = RawMaterialSerializer
-    queryset = RawMaterial.objects.all()
 
