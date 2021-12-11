@@ -12,7 +12,7 @@ from mainAPI.models import ExcelForm
 import openpyxl
 
 def download(
-        data, path, row_start_index, column_start_index, column_end_range, indexing
+        data, path, row_start_index, column_start_index, column_end_range, indexing, final_list
 ):
     file_name = datetime.now().strftime("%Y-%m-%d-%H-%M-%S") + ".xlsx"
     file_path = os.path.join(settings.MEDIA_ROOT, "excel", path)
