@@ -67,16 +67,22 @@ class CompanyTasksViewset(APIView):
 class AuditoryViewset(viewsets.ModelViewSet):
     serializer_class = AuditorySerializer
     queryset = Auditory.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class StaffViewset(viewsets.ModelViewSet):
     serializer_class = StaffSerializer
     queryset = Staff.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ProjectExpertiseViewset(viewsets.ModelViewSet):
     serializer_class = ProjectExpertiseSerializer
     queryset = ProjectExpertise.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class YouthUnionViewset(viewsets.ModelViewSet):
@@ -96,31 +102,43 @@ class GeoInfoViewset(viewsets.ModelViewSet):
 class ResourceBaseViewset(viewsets.ModelViewSet):
     serializer_class = ResourceBaseSerializer
     queryset = ResourceBase.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ChaptersViewset(viewsets.ModelViewSet):
     serializer_class = ChaptersSerializer
     queryset = Chapters.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ChaptersItemsViewset(viewsets.ModelViewSet):
     serializer_class = ChaptersItemsSerializer
     queryset = ChaptersItems.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class OfficeViewset(viewsets.ModelViewSet):
     serializer_class = OfficeSerializer
     queryset = Office.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class LawsViewset(viewsets.ModelViewSet):
     serializer_class = LawsSerializer
     queryset = Laws.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ProfConnectionsViewset(viewsets.ModelViewSet):
     serializer_class = ProfConnectionsSerializer
     queryset = ProfConnections.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ReportAcceptanceViewset(viewsets.ModelViewSet):
@@ -131,11 +149,15 @@ class ReportAcceptanceViewset(viewsets.ModelViewSet):
 class UniversityViewset(viewsets.ModelViewSet):
     serializer_class = UniversitySerializer
     queryset = University.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class ExcelFormViewset(viewsets.ModelViewSet):
     serializer_class = ExcelFormSerializer
     queryset = ExcelForm.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class NewsViewset(viewsets.ModelViewSet):
@@ -148,8 +170,6 @@ class NewsViewset(viewsets.ModelViewSet):
 class BookkeepingReportViewset(viewsets.ModelViewSet):
     serializer_class = BookkeepingReportSerializer
     queryset = BookkeepingReport.objects.all()
-    permission_classes = [AllowAny]
-    authentication_classes = []
 
 
 class MineInfoViewset(viewsets.ModelViewSet):
