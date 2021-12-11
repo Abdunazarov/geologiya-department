@@ -48,11 +48,15 @@ class TwoMapsViewset(viewsets.ModelViewSet):
 class CompanyPurposeViewset(viewsets.ModelViewSet):
     serializer_class = CompanyPurposeSerializer
     queryset = CompanyPurpose.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
 
 class CompanyTasksViewset(APIView):
     serializer_class = CompanyTasksSerializer
     queryset = CompanyTasks.objects.all()
+    permission_classes = [AllowAny]
+    authentication_classes = []
 
     def get(self, request):
         serialized = self.serializer_class(self.queryset.all(), many=True)
